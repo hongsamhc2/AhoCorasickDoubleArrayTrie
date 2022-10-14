@@ -3,6 +3,7 @@ on:
   pull_request:
     branches:
       - "*"
+    types:[opened,closed]
 
 jobs:
   notion_job:
@@ -21,6 +22,6 @@ jobs:
         with:
           node-version: 16
       - name: Install Dependencies
-        run: npm install
+        run: cd ./.github/src && npm install
       - name: Action Notion Github
-        run: node cd ./.github/src/index.js github_token=${{secrets.GITHUB_TOKEN}}
+        run: node ./.github/src/index.js github_token=${{secrets.GITHUB_TOKEN}}
