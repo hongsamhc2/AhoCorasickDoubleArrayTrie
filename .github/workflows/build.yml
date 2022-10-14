@@ -24,7 +24,7 @@ jobs:
         run: cd ./.github/src && npm install
 
       - name: Build dist
-        run: cd ./.github/src && ncc build index.js
+        run: cd ./.github/src && npm run build
 
       - name: Commit dist
         uses: EndBug/add-and-commit@v7
