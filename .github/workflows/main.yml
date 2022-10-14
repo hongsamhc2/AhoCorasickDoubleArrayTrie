@@ -1,0 +1,26 @@
+name: notion_action
+on:
+  pull_request:
+    branches:
+      - "*"
+
+jobs:
+  notion_job:
+    runs-on: ubuntu-latest
+    name: notion_action
+    steps:
+      - name: checkout action
+        uses: actions/checkout@v3
+        with:
+          # Custom token to allow commits trigger other workflows.
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: change directory
+        run: cd ./.github/src
+      - name: Set up Node.js
+        uses: actions/setup-node@v2.1.5
+        with:
+          node-version: 16
+      - name: Install Dependencies
+        run: npm install
+      - name: Action Notion Github
+        run: node index.js github_token=${{secrets.GITHUB_TOKEN}}
