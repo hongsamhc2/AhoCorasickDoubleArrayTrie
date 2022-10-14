@@ -21,10 +21,10 @@ jobs:
       - name: change dir
         run: cd ./.github/src
       - name: Install Dependencies
-        run: npm install
+        run: cd ./.github/src && npm install
 
       - name: Build dist
-        run: ncc build index.js
+        run: cd ./.github/src && ncc build index.js
 
       - name: Commit dist
         uses: EndBug/add-and-commit@v7
